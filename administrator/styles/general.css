@@ -146,6 +146,11 @@ i.fa-edit{
     margin-left: 40px;
 }
 
+#section-container section#emps .table{
+    height: 325px;
+    overflow-y: scroll;
+}
+
 #notice{
     height: calc(100vh - 45px);
     padding: 0 5%;
@@ -351,4 +356,36 @@ fieldset{
 section#ann > div,
 section#msg > div{
     margin-right: 60px;
+    margin-left: 40px;
+    padding: 5px 20px 20px 20px;
+    margin-bottom: 20px;
+    background-color: var(--accent);
+    border-radius: 10px;
+}
+
+section#ann > div p,
+section#msg > div p{
+    font-size: 1.1rem;
+}
+
+section#ann > div h2,
+section#msg > div h2{
+    color: var(--primary);
+}
+
+#emps .ctrl{
+    margin-bottom: 15px;
+}
+
+input[type='search']{
+    margin-left: 50px;
+    width: 40%;
+    padding: 3px 8px;
+    border: 1px solid var(--primary);
+    border-radius: 0;
+}
+
+input[type='search']:focus{
+    outline: none !important;
+    border: 2px solid var(--primary);
 }

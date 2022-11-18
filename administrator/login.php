@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
     session_start();
-    if(isset($_SESSION['user'])){
+    if(isset($_SESSION['_id'])){
         header('location: index.php');
     }
 ?>

@@ -111,6 +111,17 @@
                     }
                 ?>
                 <p>Total of <?php echo mysqli_num_rows($QUry)?></p>
+                <h2>Other Departments</h2>
+                <?php
+                    $qd = mysqli_query($CONNECT, "SELECT department FROM deps WHERE id!=$dept_id");
+                    if(mysqli_num_rows($qd)){
+                        while($other = mysqli_fetch_assoc($qd)){
+                            echo '<li>';
+                            echo $other['department'];
+                            echo '</li>';
+                        }
+                    }   
+                ?>
             </div>
         </div>
     </main>

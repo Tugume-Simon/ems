@@ -2,10 +2,10 @@
 <?php
     require_once('controllers/config.php');
     session_start();
-    if(!isset($_SESSION['id'])){
+    if(!isset($_SESSION['_id'])){
         header('location: login.php');
     }else{
-        $a_id = $_SESSION['id'];
+        $a_id = $_SESSION['_id'];
         $USER = "SELECT * FROM admins WHERE id=$a_id";
         $user_q = mysqli_query($CONNECT, $USER);
         if($user_q){
@@ -51,20 +51,30 @@
             <div id="section-container">
                 <section id="emps" class="show">
                     <h1>Employees</h1>
-                    <table>
-                        <thead>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Department</th>
-                            <th>Telephone</th>
-                            <th>Salary</th>
-                            <th></th>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                    <div class="ctrl">
+                        <label for="sort">Sort: </label>
+                        <select id="sort">
+                            <option value="all">All</option>
+                            <option value="dept">Dept</option>
+                        </select>
+                        <input type="search" id="search" placeholder="search by name">
+                    </div>
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Department</th>
+                                <th>Telephone</th>
+                                <th>Salary</th>
+                                <th></th>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                     <form id="employee-form" class="add-form" autocomplete="off">
                         <div class="fields">
                             <div class="form-field">

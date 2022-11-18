@@ -10,7 +10,7 @@
     if (mysqli_num_rows($exec_q)){
         $row = mysqli_fetch_assoc($exec_q);
         session_start();
-        $_SESSION['id'] = $row['id'];
+        $_SESSION['_id'] = $row['id'];
     }else{
         echo "invalid";
     }

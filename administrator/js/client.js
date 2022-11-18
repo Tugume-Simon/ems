@@ -12,6 +12,8 @@ const profEditForm = document.querySelector('#edit-profile');
 const makeAnnouncementForm = document.querySelector('#mk-annou');
 const board = document.querySelector('#notice');
 const msgView = document.querySelector('section#msg');
+const sort = document.querySelector('#sort');
+const searchbar = document.querySelector('#search');
 
 fetchData('emps');
 getOpts();
@@ -477,4 +479,39 @@ makeAnnouncementForm.addEventListener('submit', (e) => {
 
     xhr.send(params);
     makeAnnouncementForm.reset();
+});
+
+sort.addEventListener('change', (e) => {
+    if(e.target.value == 'all'){
+        fetchData('emps');
+    }
+    if(e.target.value == 'dept'){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'controllers/getSortedDept.php', true);
+
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                document.querySelector('section#emps').querySelector('tbody').innerHTML = this.responseText;
+            }
+        }
+
+        xhr.send();
+    }
+});
+
+searchbar.addEventListener('keyup', (e) => {
+    let substr = e.target.value;
+    let param = `s=${substr}`;
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'controllers/handle-search.php', true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            document.querySelector('section#emps').querySelector('tbody').innerHTML = this.responseText;
+        }
+    };
+
+    xhr.send(param);
 });
