@@ -147,7 +147,7 @@ i.fa-edit{
 }
 
 #section-container section#emps .table{
-    height: 325px;
+    height: 320px;
     overflow-y: scroll;
 }
 
@@ -164,6 +164,7 @@ i.fa-edit{
     padding: 20px 0;
     border-top: 1px solid var(--primary);
     z-index: 1;
+    background: #f1f1f165;
 }
 
 .add-form .fields .form-field{
@@ -328,8 +329,17 @@ fieldset{
     overflow-y: scroll;
 }
 
-#notice div{
+#notice > div{
     margin-bottom: 40px;
+}
+
+#notice > div .flex i.fa-trash{
+    transition: all 0.6s ease-in-out;
+    opacity: 0;
+}
+
+#notice > div:hover i.fa-trash{
+    opacity: 1;
 }
 
 #notice h2{
@@ -363,7 +373,11 @@ section#msg > div{
     border-radius: 10px;
 }
 
-section#ann > div p,
+section#ann > div:not(:first-of-type){
+    background-color: transparent;
+}
+
+section#ann > div:first-of-type p,
 section#msg > div p{
     font-size: 1.1rem;
 }
@@ -379,7 +393,7 @@ section#msg > div h2{
 
 input[type='search']{
     margin-left: 50px;
-    width: 40%;
+    width: 30%;
     padding: 3px 8px;
     border: 1px solid var(--primary);
     border-radius: 0;

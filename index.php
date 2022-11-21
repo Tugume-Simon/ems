@@ -40,7 +40,7 @@
     <main>
         <header>
             <h4>
-                <span>Admin -></span>
+                <span>User -></span>
                 <?php
                     echo $result['fullname'];
                 ?>

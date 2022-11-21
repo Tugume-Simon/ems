@@ -10,7 +10,10 @@
                     <h2>'.$rec['title'].'</h2>
                     <span>Created on: '.$rec['created'].'</span>
                     <p>'.$rec['announcement'].'</p>
-                    <small>To: '.$rec['grp'].'</small>
+                    <div class="flex">
+                        <i class="fa fa-trash" id="'.$rec['id'].'" onclick="delAnnou(event)"></i>
+                        <small>To: '.$rec['grp'].'</small>
+                    </div>
                 </div>
             ';
         }

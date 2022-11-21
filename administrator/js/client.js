@@ -515,3 +515,28 @@ searchbar.addEventListener('keyup', (e) => {
 
     xhr.send(param);
 });
+
+function delAnnou(e){
+    let id = e.target.getAttribute('id');
+    let param = `i=${id}`;
+
+    if(confirm('Are you sure?')){
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'controllers/del-announcement.php', true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                if(this.responseText == 'deleted'){
+                    alert('Deleted successfully.');
+                    getAnnouncements();
+                }else{
+                    alert('Failed to delete announcement!');
+                    console.log(this.responseText);
+                }
+            }
+        };
+    
+        xhr.send(param);
+    }
+}
